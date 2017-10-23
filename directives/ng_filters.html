@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+  <div ng-controller="MyController">
+      <!-- Date Filters -->
+      <p>{{myData.currentDate | date : 'yyyy-MM-dd'}}</p>
+      <!-- Lowercase and Uppercase Filters -->
+      <p>{{myData.fullName | uppercase}}</p>
+      <p>{{myData.fullName | lowercase}}</p>
+      <!-- Array Filters -->
+      <p>{{myData.array | limitTo : 3}}</p>
+  </div>
+
+  <script>
+    angular.module("myapp", [])
+    .controller("MyController", function($scope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData = {};
+      $scope.myData.currentDate = new Date("09/17/1984");
+      $scope.myData.fullName = "Vasanthan Ravindran";
+      $scope.myData.array = ["cricket", "Java", "UI", "Javascript", "Angular JS"];
+    });
+  </script>
+</body>
+</html>

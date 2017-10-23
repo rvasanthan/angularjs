@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+  <div ng-controller="MyController1">
+      <p>{{myData.controller}}</p>
+      <p>{{data.name}}</p>
+  </div>
+  <div ng-controller="MyController2">
+      <p>{{myData.controller}}</p>
+      <p>{{data.name}}</p>
+  </div>
+
+  <script>
+    var app = angular.module("myapp", []);
+    app.controller("MyController1", function($scope, $rootScope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData = {};
+      $rootScope.data = {}
+      $scope.myData.controller = "MyController1";
+      $rootScope.data.name = "Vasanth";
+    });
+    app.controller("MyController2", function($scope, $rootScope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData = {};
+      $rootScope.data = {}
+      $scope.myData.controller = "MyController2";
+      $rootScope.data.name = "Vasanthan Ravindran";
+    });
+  </script>
+</body>
+</html>

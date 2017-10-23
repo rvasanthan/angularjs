@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+  <div ng-controller="MyController">
+    <div ng-click="myData.doClick()">Click here !!</div>
+    <div ng-click="myData.doClickEvent($event)">Click here to pass an event!!</div>
+    <div ng-click="myData.doClickEvent($event)">
+      <ol>
+        <li ng-repeat="item in myData.items" ng-click="myData.doGetItems(item)">{{item}}</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    angular.module("myapp", []).controller("MyController", function($scope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData = {};
+      $scope.myData.items = ["java", "javascript", "python", "Ruby"];
+      $scope.myData.doClick = function() {
+        alert("ng-click alert is displayed !!");
+      };
+      $scope.myData.doClickEvent = function(event) {
+        alert("Clicked: "+ event.clientX+", "+ event.clientY);
+      };
+      $scope.myData.doGetItems = function(item) {
+        alert("You choose "+ item);
+      }
+    });
+  </script>
+</body>
+</html>
+
