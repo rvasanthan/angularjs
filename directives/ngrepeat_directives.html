@@ -7,7 +7,10 @@
 <body ng-app="myapp">
   <div ng-controller="MyController">
       <ol>
+        <!-- This below statement iterate through the list and prints the items -->
         <li ng-repeat="theItem in myData.items">{{theItem.text}}</li>
+        <!-- This below statement iterate and filters the data based on a filter condition. -->
+        <li ng-repeat="theItem in myData.items | filter: myData.itemFilter">{{theItem.text}}</li>
       </ol>
   </div>
 
@@ -16,7 +19,11 @@
     .controller("MyController", function($scope) {
       //The below statement is important. Without initializing it, you cannot add "text" to myData
       $scope.myData = {};
-        $scope.myData.items = [ {text : "one"}, {text : "two"}, {text : "three"} ];
+        $scope.myData.items = [ {text : "one"}, {text : "two"}, {text : "three"}, {text: "four"} ];
+        $scope.myData.itemFilter = function(item) {
+          if(item.text == "two") return false;
+          return true;
+        }
     });
   </script>
 </body>
