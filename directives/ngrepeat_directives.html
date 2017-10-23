@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+  <div ng-controller="MyController">
+      <ol>
+        <li ng-repeat="theItem in myData.items">{{theItem.text}}</li>
+      </ol>
+  </div>
+
+  <script>
+    angular.module("myapp", [])
+    .controller("MyController", function($scope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData = {};
+        $scope.myData.items = [ {text : "one"}, {text : "two"}, {text : "three"} ];
+    });
+  </script>
+</body>
+</html>

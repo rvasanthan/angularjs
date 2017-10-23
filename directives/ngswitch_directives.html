@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+  <div ng-controller="MyController" ng-switch on="myData.switch">
+      <p ng-switch-when="1">This will be displayed when the switch is set to 1.</p>
+      <p ng-switch-when="2">This will be displayed when the switch is set to 2.</p>
+      <p ng-switch-when="3">This will be displayed when the switch is set to 3.</p>
+      <p ng-switch-default>This will be displayed when the switch is not set to 1,2 or 3.</p>
+  </div>
+
+  <script>
+    angular.module("myapp", [])
+    .controller("MyController", function($scope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData={};
+      $scope.myData.ipFunction = function() {
+        console.log("Logging a Interpolation Technique using functions");
+        return "Illustrating the Interpolation Technique using functions";
+      };
+      $scope.myData.text = "Illustration of the Interpolation Technique";
+      $scope.myData.switch = "2";
+    });
+  </script>
+</body>
+</html>

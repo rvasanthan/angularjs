@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<!-- the difference between ng-hide/ng-show and the ng-if directive is that ng-hide/ng-show uses the CSS display:none 
+      style to be applied to the components. But ng-if just removes the component from the DOM. -->
+<body ng-app="myapp">
+  <div ng-controller="MyController">
+      <p ng-if="myData.ifflag">This will be displayed when the ifflag is set to true.</p>
+  </div>
+
+  <script>
+    angular.module("myapp", [])
+    .controller("MyController", function($scope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData={};
+      $scope.myData.ipFunction = function() {
+        console.log("Logging a Interpolation Technique using functions");
+        return "Illustrating the Interpolation Technique using functions";
+      };
+      $scope.myData.text = "Illustration of the Interpolation Technique";
+      $scope.myData.ifflag = true;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+  <div ng-controller="MyController" >
+      <p ng-bind="myData.text"></p>
+      <!-- ng-bind attribute can derive data from functions -->
+      <p ng-bind="myData.ipFunction()"></p>
+  </div>
+
+  <script>
+    angular.module("myapp", [])
+    .controller("MyController", function($scope) {
+      //The below statement is important. Without initializing it, you cannot add "text" to myData
+      $scope.myData={};
+      $scope.myData.ipFunction = function() {
+        console.log("Logging a Interpolation Technique using functions");
+        return "Illustrating the Interpolation Technique using functions";
+      };
+      $scope.myData.text = "Illustration of the Interpolation Technique";
+    });
+  </script>
+</body>
+</html>
